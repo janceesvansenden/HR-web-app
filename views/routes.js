@@ -30,6 +30,9 @@ angular.module('DeNieuweRekening', ['ngRoute'])
         .when('/rekening', {
         	templateUrl: '/views/rekening/rekening.html'
         })
+        .when('/create_account', {
+            templateUrl: '/views/create_account/create_account.html'
+        })
         .otherwise({
         	redirectTo: '/'
         });
