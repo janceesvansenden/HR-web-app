@@ -27,16 +27,16 @@ module.exports = function(grunt) {
 				dest: './assets/js/app.js'
 			}
 		},
-		// uglify: {
-		// 	options: {
-		// 		mangle: false
-		// 	},
-		// 	app: {
-		// 		files: {
-		// 			'.assets/js/app.js': '.assets/js/app.js'
-		// 		}
-		// 	}
-		// },
+		uglify: {
+			options: {
+				mangle: false
+			},
+			app: {
+				files: {
+					'.assets/js/app.js': '.assets/js/app.js'
+				}
+			}
+		},
 		watch: {
 			all: {
 				files: '**/*.html',

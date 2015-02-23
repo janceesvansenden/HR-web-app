@@ -1,5 +1,7 @@
 <h1>Declaratie's</h1>
 
+<p>Welkom {{ name }}</p>
+
 <div class="row">
 	<div class="col-sm-4">
 
@@ -23,27 +25,65 @@
 					<input type="date" class="form-control" id="datum">
 				</div>
 			</div>
-		</form>
-
-
-		
-	</div>
-	<div class="col-sm-6 col-sm-offset-1">
-		
-		<label for="wat" class="control-label">Deelnemers</label>
-			
-		<form class="form-inline">
-			<div class="form-group">
-				<button type="button" class="btn btn-default" aria-expanded="false">
-					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-				</button>
-				<input type="text" class="form-control form-number" style="width: 3em" value="0">
-				<button type="button" class="btn btn-default" aria-expanded="false">
-					<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-				</button>
-				<input type="text" class="form-control">
+			<div class="radio">
+				<label for="">
+					<input type="radio" name="declasRadio" id="optie1" value="1">
+					Iedereen
+				</label>
+				<label for="">
+					<input type="radio" name="declasRadio" id="optie2" value="2">
+					Kies personen
+				</label>
 			</div>
+			<button class="btn btn-primary">Toevoegen</button>
 		</form>
+	</div>
+
+
+	<div class="col-xs-8 col-sm-7 col-sm-offset-1">
+		<div class="deelnemers">
+
+			<label class="control-label">Deelnemers</label>
+			
+			<form class="form-group form-inline">
+				<div class="form-group">
+					<button type="button" class="btn btn-default" aria-expanded="false">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+					<input type="text" class="form-control form-number" style="width: 3em" value="0">
+					<button type="button" class="btn btn-default" aria-expanded="false">
+						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+					</button>
+					<input type="text" class="form-control">
+				</div>
+			</form>
+			<form class="form-group form-inline">
+				<div class="form-group">
+					<button type="button" class="btn btn-default" aria-expanded="false">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+					<input type="text" class="form-control form-number" style="width: 3em" value="0">
+					<button type="button" class="btn btn-default" aria-expanded="false">
+						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+					</button>
+					<input type="text" class="form-control">
+				</div>
+			</form>
+			<form class="form-group form-inline">
+				<div class="form-group">
+					<button type="button" class="btn btn-default" aria-expanded="false">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+					<input type="text" class="form-control form-number" style="width: 3em" value="0">
+					<button type="button" class="btn btn-default" aria-expanded="false">
+						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+					</button>
+					<input type="text" class="form-control">
+				</div>
+			</form>
+
+		</div>
+
 	</div>
 </div>
 

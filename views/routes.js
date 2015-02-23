@@ -1,6 +1,6 @@
 angular.module('DeNieuweRekening', ['ngRoute'])
 
-    .config(['$routeProvider', function($routeProvider) {
+    .config(['$routeProvider', function ($routeProvider) {
       $routeProvider
         .when('/', {
           templateUrl: '/views/welkom/welkom.html'
@@ -12,7 +12,8 @@ angular.module('DeNieuweRekening', ['ngRoute'])
         	templateUrl: '/views/statistieken/statistieken.html'
         })
         .when('/declas', {
-        	templateUrl: '/views/declas/declas.html'
+        	templateUrl: '/views/declas/declas.html',
+            controller: 'DeclasController'
         })
         .when('/eetlijst', {
         	templateUrl: '/views/eetlijst/eetlijst.html'
