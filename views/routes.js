@@ -31,7 +31,8 @@ angular.module('DeNieuweRekening', ['ngRoute'])
         	templateUrl: '/views/rekening/rekening.html'
         })
         .when('/create_account', {
-            templateUrl: '/views/create_account/create_account.html'
+            templateUrl: '/views/create_account/create_account.html',
+            controller: 'CreateAccountController'
         })
         .otherwise({
         	redirectTo: '/'
