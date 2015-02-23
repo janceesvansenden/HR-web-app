@@ -12537,5 +12537,5 @@ if (typeof jQuery === 'undefined') { throw new Error('Jasny Bootstrap\'s JavaScr
 }(window.jQuery);
 
 $(document).ready(function() {
-  $('input:radio[name=declasRadio]')[1].checked = true;
+  // $('input:radio[name=declasRadio]')[1].checked = true;
 });
