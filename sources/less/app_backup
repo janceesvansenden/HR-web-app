@@ -1,0 +1,33 @@
+@path-components: '../../components/';
+
+// Core variables
+@import 'variables.less';
+@import 'variables-jasny.less';
+
+//Core Mixins
+@import '@{path-components}bootstrap/less/mixins.less';
+
+// Reset
+@import '@{path-components}bootstrap/less/normalize.less';
+
+// Core CSS
+@import '@{path-components}bootstrap/less/scaffolding.less';
+@import '@{path-components}bootstrap/less/type.less';
+@import '@{path-components}bootstrap/less/grid.less';
+@import '@{path-components}bootstrap/less/forms.less';
+@import '@{path-components}bootstrap/less/buttons.less';
+
+// Components
+@import '@{path-components}bootstrap/less/glyphicons.less';
+@import '@{path-components}bootstrap/less/dropdowns.less';
+@import '@{path-components}bootstrap/less/navs.less';
+@import '@{path-components}bootstrap/less/navbar.less';
+@import '@{path-components}bootstrap/less/close.less';
+
+// Components (Jasny)
+@import '@{path-components}jasny-bootstrap/less/navmenu.less';
+@import '@{path-components}jasny-bootstrap/less/offcanvas.less';
+
+// Utility classes
+@import '@{path-components}bootstrap/less/utilities.less';
+@import '@{path-components}bootstrap/less/responsive-utilities.less';
