@@ -47,7 +47,7 @@ router.get('/', function (req, res) {
 });
 
 // Read.
-app.get('/Getpersonal', function( req, res ) {
+app.get('/personal', function( req, res ) {
 		
 	// Queries all DoDos in database.
 	db.query( 'SELECT * FROM huisgenoot WHERE email = "jancees@test.nl"', function( err, rows, fields ) {
