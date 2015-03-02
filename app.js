@@ -46,6 +46,24 @@ router.get('/', function (req, res) {
   res.render('index', { title: 'De Nieuwe Rekening' });
 });
 
+// Read.
+app.get('/personal', function( req, res ) {
+		
+	// Queries all DoDos in database.
+	db.query( 'SELECT * FROM huisgenoot WHERE email = "jancees@test.nl"', function( err, rows, fields ) {
+
+		if (err) throw err;
+
+		var gegevens = {
+			'voornaam': rows[0].voornaam,
+			'achternaam': rows[0].achternaam
+		}
+
+		res.json(gegevens);
+	});
+
+});
+
 // Create account
 router.post('/createAccount', function (req, res ){
 	/*

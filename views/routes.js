@@ -26,6 +26,7 @@ angular.module('DeNieuweRekening', ['ngRoute'])
         })
         .when('/personal', {
         	templateUrl: '/views/personal/personal.html'
+            controller: 'PersonalController'
         })
         .when('/rekening', {
         	templateUrl: '/views/rekening/rekening.html'
