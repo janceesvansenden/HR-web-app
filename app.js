@@ -11,7 +11,7 @@ var app = express();
 var db = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: 'root',
+	password: 'Linkinpark2',
 	database: 'nieuwe_rekening'
 });
 
@@ -47,7 +47,7 @@ router.get('/', function (req, res) {
 });
 
 // Read.
-app.get('/personal', function( req, res ) {
+app.get('/Getpersonal', function( req, res ) {
 		
 	// Queries all DoDos in database.
 	db.query( 'SELECT * FROM huisgenoot WHERE email = "jancees@test.nl"', function( err, rows, fields ) {
