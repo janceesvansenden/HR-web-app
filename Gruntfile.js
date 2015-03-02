@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+	// require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
 	grunt.initConfig({
 		less: {
@@ -13,9 +13,6 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		uglify: {
-
-		},
 		concat: {
 			options: {
 				seperator: ';'
@@ -28,6 +25,13 @@ module.exports = function(grunt) {
 					'./sources/js/custom.js'
 				],
 				dest: './assets/js/app.js'
+			}
+		},
+		uglify: {
+			js_app: {
+				files: {
+					'./assets/js/app.min.js' : ['./assets/js/app.js']
+				}
 			}
 		},
 		watch: {
@@ -59,6 +63,11 @@ module.exports = function(grunt) {
 		}
 	});
 
+	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+
 	// Task definition
-	grunt.registerTask('default', ['less','concat','watch']);
+	grunt.registerTask('default', ['less','concat','uglify','watch']);
 };
