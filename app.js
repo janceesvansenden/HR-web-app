@@ -52,7 +52,7 @@ router.post('/createAccount', function (req, res ){
 	/*
 	// Only add account if email is defined.
 	if ( req.body.email === undefined ) {
-		res.status(400).send("No title defined");
+		res.status(400).send("No e-mail defined");
 	}
 	*/
 
@@ -73,7 +73,7 @@ router.post('/createAccount', function (req, res ){
 		if (err) throw err;
 	});
 
-	console.log("created account" + voornaam + " " + achternaam);
+	console.log("created account" + values.voornaam + " " + values.achternaam);
 });
 
 // apply router to application
