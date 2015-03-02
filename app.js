@@ -75,6 +75,66 @@ router.post('/createAccount', function (req, res ){
 	console.log("created account: " + values.voornaam + " " + values.achternaam);
 });
 
+// Voer declaratie in
+router.post('/declaratieInvoer', function (req, res ){
+	/*
+	// Only add account if email is defined.
+	if ( req.body.email === undefined ) {
+		res.status(400).send("No e-mail defined");
+	}
+	*/
+
+	var values = {
+		'bedrag': req.body.bedrag,
+		'naam': req.body.wat,
+		'datum': req.body.datum,
+		'declaratie_flag': 1,
+		'turf_flag': 0,
+		'naam_kostenpost': "niet verwerkt",
+		'tab_kostenpost': "niet verwerkt",
+		'huisnaam_kostenpost': "test",
+		'email_huisgenoot': "test@test.nl"
+	};
+
+	// Insert account in database
+	db.query('INSERT INTO invoer SET ?', values, function( err, result ) {
+		// Catch errors.
+		if (err) throw err;
+	});
+
+	console.log("declaratie ingevoerd: " + values.naam + " €" + values.bedrag);
+});
+
+// Maak huis aan
+router.post('/huisAanmaken', function (req, res ){
+	/*
+	// Only add account if email is defined.
+	if ( req.body.email === undefined ) {
+		res.status(400).send("No e-mail defined");
+	}
+	*/
+
+	var values = {
+		'huisnaam': req.body.huisnaam,
+		'wachtwoord': req.body.wachtwoord,
+		'straatnaam': req.body.straatnaam,
+		'huisnummer': req.body.huisnummer,
+		'plaats': req.body.plaats,
+		'studentenvereniging': req.body.studentenvereniging,
+		'email': req.body.email,
+		'IBAN': req.body.IBAN,
+		'rekeninghouder': req.body.rekeninghouder
+	};
+
+	// Insert account in database
+	db.query('INSERT INTO huis SET ?', values, function( err, result ) {
+		// Catch errors.
+		if (err) throw err;
+	});
+
+	console.log("Huis aangemaakt: " + values.huisnaam);
+});
+
 // apply router to application
 app.use('/', router);
 

@@ -5,24 +5,24 @@
 <div class="row">
 	<div class="col-sm-4">
 
-		<form class="form">
+		<form class="form" action="/declaratieInvoer" method="post">
 			<div class="form-group">
 				<label for="wat" class="control-label">Wat</label>
 				<div class="">
-					<input type="text" class="form-control" id="wat">
+					<input type="text" class="form-control" id="wat" name="wat">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="bedrag" class="control-label">Bedrag</label>
 				<div class="input-group">
 					<div class="input-group-addon">&euro;</div>
-					<input type="text" class="form-control" id="bedrag">
+					<input type="text" class="form-control" id="bedrag" name="bedrag">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="Datum" class="control-label">Datum</label>
 				<div class="">
-					<input type="date" class="form-control" id="datum">
+					<input type="date" class="form-control" id="datum" name="datum">
 				</div>
 			</div>
 			<div class="radio">
@@ -35,7 +35,7 @@
 					Kies personen
 				</label>
 			</div>
-			<button class="btn btn-primary">Toevoegen</button>
+			<button type="submit" class="btn btn-primary">Toevoegen</button>
 		</form>
 	</div>
 
