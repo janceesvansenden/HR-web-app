@@ -23,7 +23,6 @@ db.connect( function(err) {
 		// Exit program since it cannot.
 		process.exit(1);
 	}
-
 	console.log('Connected to database.');
 });
 
@@ -73,7 +72,7 @@ router.post('/createAccount', function (req, res ){
 		if (err) throw err;
 	});
 
-	console.log("created account" + values.voornaam + " " + values.achternaam);
+	console.log("created account: " + values.voornaam + " " + values.achternaam);
 });
 
 // apply router to application
