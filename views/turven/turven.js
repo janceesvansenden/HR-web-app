@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var huisgenoten = [
+	var huisgenoten = [
 						"Bart",
 						"Jan Cees",
 						"Peta",
@@ -8,8 +8,8 @@ $(document).ready(function() {
 					  ];
 
 	for (var i = 0; i <= huisgenoten.length - 1; i++) {
-
+		
 	};
 
-	console.log($('.huisgenoten-turven').width());
+	console.log($('#huisgenoten-turven').height());
 });

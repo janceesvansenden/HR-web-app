@@ -12537,7 +12537,17 @@ if (typeof jQuery === 'undefined') { throw new Error('Jasny Bootstrap\'s JavaScr
 }(window.jQuery);
 
 $(document).ready(function() {
-  // $('input:radio[name=declasRadio]')[1].checked = true;
+  var huisgenoten = [
+						"Bart",
+						"Jan Cees",
+						"Peta",
+						"Piet",
+						"Henk"
+					  ];
 
+	for (var i = 0; i <= huisgenoten.length - 1; i++) {
 
+	};
+
+	console.log($('.huisgenoten-turven').width());
 });
