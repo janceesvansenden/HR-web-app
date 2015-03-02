@@ -26,6 +26,7 @@ angular.module('DeNieuweRekening', ['ngRoute'])
         })
         .when('/personal', {
         	templateUrl: '/views/personal/personal.html'
+            controller: 'PersonalController'
         })
         .when('/rekening', {
         	templateUrl: '/views/rekening/rekening.html'
@@ -33,6 +34,10 @@ angular.module('DeNieuweRekening', ['ngRoute'])
         .when('/create_account', {
             templateUrl: '/views/create_account/create_account.html',
             controller: 'CreateAccountController'
+        })
+        .when('/huis_aanmaken', {
+            templateUrl: '/views/huis_aanmaken/huis_aanmaken.html',
+            controller: 'HuisAanmakenController'
         })
         .otherwise({
         	redirectTo: '/'
