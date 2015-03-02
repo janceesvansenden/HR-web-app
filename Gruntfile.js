@@ -13,6 +13,9 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		uglify: {
+
+		},
 		concat: {
 			options: {
 				seperator: ';'
@@ -25,16 +28,6 @@ module.exports = function(grunt) {
 					'./sources/js/custom.js'
 				],
 				dest: './assets/js/app.js'
-			}
-		},
-		uglify: {
-			options: {
-				mangle: false
-			},
-			app: {
-				files: {
-					'.assets/js/app.js': '.assets/js/app.js'
-				}
 			}
 		},
 		watch: {
