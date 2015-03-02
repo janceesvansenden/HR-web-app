@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-	// require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
 	grunt.initConfig({
 		less: {
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 					'./components/jquery/dist/jquery.js',
 					'./components/bootstrap/dist/js/bootstrap.js',
 					'./components/jasny-bootstrap/dist/js/jasny-bootstrap.js',
-					'./sources/js/custom.js'
+					'./sources/js/custom.js',
 				],
 				dest: './assets/js/app.js'
 			}
@@ -55,18 +55,13 @@ module.exports = function(grunt) {
 					'./components/jasny-bootstrap/dist/js/jasny-bootstrap.js',
 					'./sources/js/custom.js'
 				],
-				tasks: ['concat:js_app','uglify:js_app'],
+				tasks: ['concat:js_app',], // add 'uglify:js_app' to use uglify while watching
 				options: {
 					livereload: true
 				}
 			}
 		}
 	});
-
-	grunt.loadNpmTasks('grunt-contrib-less');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// Task definition
 	grunt.registerTask('default', ['less','concat','uglify','watch']);
