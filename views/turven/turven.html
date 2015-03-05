@@ -2,16 +2,19 @@
 
 <div class="row">
 	<div class="col-md-5 huisgenoten-turven">
-		
-
+		<button type="button" class="btn btn-default huisgenoot-turven" ng-repeat="huisgenoot in huisgenoten" ng-style="huisgenootStyle">
+			{{ huisgenoot.name }}
+		</button>
 	</div>
 	<div class="col-md-2">
-		
 	</div>
 	<div class="col-md-5">
 		<div class="row">
-			
+			<button type="button" class="btn btn-default turf-turven" ng-repeat="turf in turfartikelen" ng-style="turfStyle">
+				{{ turf.name }}
+			</button>
 		</div>
+		<br>
 		<div class="row">
 			<button class="btn btn-primary">Turven</button>
 		</div>

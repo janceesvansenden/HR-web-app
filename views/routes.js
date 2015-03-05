@@ -6,7 +6,8 @@ angular.module('DeNieuweRekening', ['ngRoute'])
           templateUrl: '/views/welkom/welkom.html'
         })
         .when('/turven', {
-        	templateUrl: '/views/turven/turven.html'
+        	templateUrl: '/views/turven/turven.html',
+            controller: 'TurvenController'
         })
         .when('/statistieken', {
         	templateUrl: '/views/statistieken/statistieken.html'

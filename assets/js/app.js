@@ -12563,6 +12563,5 @@ $(document).ready(function() {
 	for (var i = 0; i <= huisgenoten.length - 1; i++) {
 		
 	};
-
-	console.log('hallo');
 });
+
