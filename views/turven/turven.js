@@ -11,5 +11,5 @@ $(document).ready(function() {
 		
 	};
 
-	console.log($('#huisgenoten-turven').height());
+	console.log('hallo');
 });

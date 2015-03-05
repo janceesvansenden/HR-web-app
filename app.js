@@ -11,7 +11,7 @@ var app = express();
 var db = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: 'Linkinpark2',
+	password: 'root',
 	database: 'nieuwe_rekening'
 });
 
