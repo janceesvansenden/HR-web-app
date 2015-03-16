@@ -8,8 +8,8 @@ module.exports = function(grunt) {
 					compress: true
 				},
 				files: {
-					"./assets/css/app.css": "./sources/less/app.less",
-					"./assets/css/style.css": "./sources/less/style.less"
+					'./assets/css/app.css': './sources/less/app.less',
+					'./assets/css/style.css': './views/**/*.less'
 				}
 			}
 		},
@@ -22,9 +22,18 @@ module.exports = function(grunt) {
 					'./components/jquery/dist/jquery.js',
 					'./components/bootstrap/dist/js/bootstrap.js',
 					'./components/jasny-bootstrap/dist/js/jasny-bootstrap.js',
-					'./sources/js/custom.js',
+					'./views/**/*.js',
+					'!./views/**/*.controller.js',
+					'!./views/routes.js'
 				],
 				dest: './assets/js/app.js'
+			},
+			js_angular: {
+				src: [
+					'./views/routes.js',
+					'./views/**/*.controller.js'
+				],
+				dest: './assets/js/angular_app.js'
 			}
 		},
 		uglify: {
@@ -42,7 +51,7 @@ module.exports = function(grunt) {
 				}
 			},
 			less: {
-				files: ['./sources/less/*.less'],
+				files: ['./sources/less/*.less', './views/**/*.less'],
 				tasks: ['less'],
 				options: {
 					livereload: true
@@ -53,9 +62,21 @@ module.exports = function(grunt) {
 					'./components/jquery/dist/jquery.js',
 					'./components/bootstrap/dist/js/bootstrap.js',
 					'./components/jasny-bootstrap/dist/js/jasny-bootstrap.js',
-					'./sources/js/custom.js'
+					'./views/**/*.js',
+					'!./views/**/*.controller.js',
+					'!./views/routes.js'
 				],
 				tasks: ['concat:js_app',], // add 'uglify:js_app' to use uglify while watching
+				options: {
+					livereload: true
+				}
+			},
+			js_angular: {
+				files: [
+					'./views/routes.js',
+					'./views/**/*.controller.js'
+				],
+				tasks: ['concat:js_angular'],
 				options: {
 					livereload: true
 				}
