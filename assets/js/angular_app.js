@@ -51,9 +51,11 @@ angular.module('DeNieuweRekening')
     }]);
 angular.module('DeNieuweRekening')
 
-    .controller('DeclasController', ['$scope', function ($scope) {
-        $scope.name = 'Jan Cees';
-    }]);
+    .controller('DeclasController', ['$scope', 'deelnemers', function ($scope, deelnemers) {
+    	$scope.deelnemers = deelnemers;
+
+    	
+    }])
 angular.module('DeNieuweRekening')
 
     .controller('HuisAanmakenController', ['$scope', function ($scope) {
@@ -78,7 +80,15 @@ angular.module('DeNieuweRekening')
       $scope.huisgenoten = Huisgenoten;
       $scope.turfartikelen = Turfartikelen;
 
-      var width = Math.floor($('.huisgenoten-turven').width()/4) - 5;
+      var width;
+      var columnWidth = $('.huisgenoten-turven').width();
+
+      if (window.innerWidth <= 1024 ) {
+        width = Math.floor(columnWidth/3) - 8;
+      } else {
+        width = Math.floor(columnWidth/4) - 10;
+      };
+     
       
       $scope.huisgenootStyle = {
       	'width': width + "px",
@@ -114,3 +124,24 @@ angular.module('DeNieuweRekening')
     	];
     })
 
+
+angular.module('DeNieuweRekening')
+
+	.factory('DeclaFcn', function() {
+		$('')
+	})
+
+
+
+	.factory('deelnemers', function() {
+		deelnemers = [
+			{ name: 'Bart', value: 1 },
+			{ name: 'Jan Cees', value: 0 },
+			{ name: 'Henk', value: 0 },
+			{ name: 'Frits', value: 0 },
+		];
+
+		
+
+		return deelnemers
+	})
