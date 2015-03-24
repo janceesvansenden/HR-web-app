@@ -121,8 +121,8 @@ router.post('/declaratieInvoer', function (req, res ){
 		'turf_flag': 0,
 		'naam_kostenpost': "niet verwerkt",
 		'tab_kostenpost': "niet verwerkt",
-		'huisnaam_kostenpost': "test",
-		'email_huisgenoot': "test@test.nl"
+		'huisnaam_kostenpost': "orw kut",
+		'email_huisgenoot': "jancees@test.nl"
 	};
 
 	// Insert account in database
