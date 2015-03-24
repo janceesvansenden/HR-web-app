@@ -46,18 +46,29 @@ router.get('/', function (req, res) {
   res.render('index', { title: 'De Nieuwe Rekening' });
 });
 
-// Read.
-app.get('/personal', function( req, res ) {
+// Read personal details
+router.get('/personal', function( req, res ) {
 		
-	// Queries all DoDos in database.
+	// Queries for personal details in database.
 	db.query( 'SELECT * FROM huisgenoot WHERE email = "jancees@test.nl"', function( err, rows, fields ) {
+
+		// format the geboortedatum correctly
+		var day = rows[0].geboortedatum.getUTCDate()+1
+		var month = rows[0].geboortedatum.getUTCMonth()+1;
+		var year = rows[0].geboortedatum.getUTCFullYear();
 
 		if (err) throw err;
 
 		var gegevens = {
 			'voornaam': rows[0].voornaam,
-			'achternaam': rows[0].achternaam
-		}
+			'achternaam': rows[0].achternaam,
+			'email': rows[0].Email,
+			'bijnaam': rows[0].bijnaam,
+			'stad': rows[0].stad,
+			'geboortedatum': day + "-" + month + "-" + year,
+			'IBAN': rows[0].IBAN,
+			'rekeninghouder': rows[0].rekeninghouder
+		};
 
 		res.json(gegevens);
 	});

@@ -51,11 +51,9 @@ angular.module('DeNieuweRekening')
     }]);
 angular.module('DeNieuweRekening')
 
-    .controller('DeclasController', ['$scope', 'deelnemers', function ($scope, deelnemers) {
-    	$scope.deelnemers = deelnemers;
-
-    	
-    }])
+    .controller('DeclasController', ['$scope', function ($scope) {
+        $scope.name = 'Jan Cees';
+    }]);
 angular.module('DeNieuweRekening')
 
     .controller('HuisAanmakenController', ['$scope', function ($scope) {
@@ -66,7 +64,9 @@ angular.module('DeNieuweRekening')
     .controller('PersonalController', ['$scope', '$http', function ($scope, $http) {
     	$http.get('/personal').
 	    	success(function(data){
-	    		console.log('succes: ', data);
+	    		//console.log('succes: ', data);
+	    		$scope.personal = data;
+	    		console.log($scope.personal);
 	    	}).
 	    	error(function(data, status){
 	    		console.log('error: ',data, status);
@@ -78,15 +78,7 @@ angular.module('DeNieuweRekening')
       $scope.huisgenoten = Huisgenoten;
       $scope.turfartikelen = Turfartikelen;
 
-      var width;
-      var columnWidth = $('.huisgenoten-turven').width();
-
-      if (window.innerWidth <= 1024 ) {
-        width = Math.floor(columnWidth/3) - 8;
-      } else {
-        width = Math.floor(columnWidth/4) - 10;
-      };
-     
+      var width = Math.floor($('.huisgenoten-turven').width()/4) - 5;
       
       $scope.huisgenootStyle = {
       	'width': width + "px",
@@ -122,24 +114,3 @@ angular.module('DeNieuweRekening')
     	];
     })
 
-
-angular.module('DeNieuweRekening')
-
-	.factory('DeclaFcn', function() {
-
-	})
-
-
-
-	.factory('deelnemers', function() {
-		deelnemers = [
-			{ name: 'Bart', value: 1 },
-			{ name: 'Jan Cees', value: 0 },
-			{ name: 'Henk', value: 0 },
-			{ name: 'Frits', value: 0 },
-		];
-
-		
-
-		return deelnemers
-	})
