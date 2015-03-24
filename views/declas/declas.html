@@ -1,7 +1,5 @@
 <h1>Declaratie's</h1>
 
-<p>Welkom {{ name }}</p>
-
 <div class="row">
 	<div class="col-sm-4">
 
@@ -45,43 +43,18 @@
 
 			<label class="control-label">Deelnemers</label>
 			
-			<form class="form-group form-inline">
+			<form class="form-group form-inline" ng-repeat="deelnemer in deelnemers">
 				<div class="form-group">
-					<button type="button" class="btn btn-default" aria-expanded="false">
+					<button type="button" class="btn btn-default" aria-expanded="false" ng-click="deelnemer.value = deelnemer.value + 1">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 					</button>
-					<input type="text" class="form-control form-number" style="width: 3em" value="0">
-					<button type="button" class="btn btn-default" aria-expanded="false">
+					<input type="text" class="form-control form-number" style="width: 3em" ng-model="deelnemer.value">
+					<button type="button" class="btn btn-default" aria-expanded="false" ng-click="deelnemer.value = deelnemer.value - 1">
 						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
 					</button>
-					<input type="text" class="form-control">
+					<span style="width: 15em">&nbsp;&nbsp; {{ deelnemer.name }}</span>
 				</div>
-			</form>
-			<form class="form-group form-inline">
-				<div class="form-group">
-					<button type="button" class="btn btn-default" aria-expanded="false">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
-					<input type="text" class="form-control form-number" style="width: 3em" value="0">
-					<button type="button" class="btn btn-default" aria-expanded="false">
-						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-					</button>
-					<input type="text" class="form-control">
-				</div>
-			</form>
-			<form class="form-group form-inline">
-				<div class="form-group">
-					<button type="button" class="btn btn-default" aria-expanded="false">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
-					<input type="text" class="form-control form-number" style="width: 3em" value="0">
-					<button type="button" class="btn btn-default" aria-expanded="false">
-						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-					</button>
-					<input type="text" class="form-control">
-				</div>
-			</form>
-			
+			</form>			
 		</div>
 
 	</div>
