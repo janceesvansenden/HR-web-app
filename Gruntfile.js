@@ -21,17 +21,15 @@ module.exports = function(grunt) {
 				src: [
 					'./components/jquery/dist/jquery.js',
 					'./components/bootstrap/dist/js/bootstrap.js',
-					'./components/jasny-bootstrap/dist/js/jasny-bootstrap.js',
-					'./views/**/*.js',
-					'!./views/**/*.controller.js',
-					'!./views/routes.js'
+					'./components/jasny-bootstrap/dist/js/jasny-bootstrap.js'
 				],
 				dest: './assets/js/app.js'
 			},
 			js_angular: {
 				src: [
 					'./views/routes.js',
-					'./views/**/*.controller.js'
+					'./views/**/*.controller.js',
+					'./views/**/*.factory.js'
 				],
 				dest: './assets/js/angular_app.js'
 			}

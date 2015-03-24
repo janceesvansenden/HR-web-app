@@ -1,5 +1,7 @@
 angular.module('DeNieuweRekening')
 
-    .controller('DeclasController', ['$scope', function ($scope) {
-        $scope.name = 'Jan Cees';
-    }]);
+    .controller('DeclasController', ['$scope', 'deelnemers', function ($scope, deelnemers) {
+    	$scope.deelnemers = deelnemers;
+
+    	
+    }])

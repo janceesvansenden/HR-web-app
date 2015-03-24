@@ -4,7 +4,15 @@ angular.module('DeNieuweRekening')
       $scope.huisgenoten = Huisgenoten;
       $scope.turfartikelen = Turfartikelen;
 
-      var width = Math.floor($('.huisgenoten-turven').width()/4) - 5;
+      var width;
+      var columnWidth = $('.huisgenoten-turven').width();
+
+      if (window.innerWidth <= 1024 ) {
+        width = Math.floor(columnWidth/3) - 8;
+      } else {
+        width = Math.floor(columnWidth/4) - 10;
+      };
+     
       
       $scope.huisgenootStyle = {
       	'width': width + "px",
