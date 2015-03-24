@@ -54,8 +54,8 @@ angular.module('DeNieuweRekening')
     .controller('DeclasController', ['$scope', 'deelnemers', function ($scope, deelnemers) {
     	$scope.deelnemers = deelnemers;
 
-    	
-    }])
+
+    }]);
 angular.module('DeNieuweRekening')
 
     .controller('HuisAanmakenController', ['$scope', function ($scope) {
@@ -127,21 +127,11 @@ angular.module('DeNieuweRekening')
 
 angular.module('DeNieuweRekening')
 
-	.factory('DeclaFcn', function() {
-		$('')
-	})
-
-
-
 	.factory('deelnemers', function() {
-		deelnemers = [
+		return deelnemers = [
 			{ name: 'Bart', value: 1 },
 			{ name: 'Jan Cees', value: 0 },
 			{ name: 'Henk', value: 0 },
-			{ name: 'Frits', value: 0 },
+			{ name: 'Frits', value: 0 }
 		];
-
-		
-
-		return deelnemers
-	})
+	});
