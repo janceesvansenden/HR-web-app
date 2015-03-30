@@ -52,12 +52,12 @@ router.get('/personal', function( req, res ) {
 	// Queries for personal details in database.
 	db.query( 'SELECT * FROM huisgenoot WHERE email = "jancees@test.nl"', function( err, rows, fields ) {
 
+		if (err) throw err;
+
 		// format the geboortedatum correctly
 		var day = rows[0].geboortedatum.getUTCDate()+1
 		var month = rows[0].geboortedatum.getUTCMonth()+1;
 		var year = rows[0].geboortedatum.getUTCFullYear();
-
-		if (err) throw err;
 
 		var gegevens = {
 			'voornaam': rows[0].voornaam,
@@ -74,6 +74,18 @@ router.get('/personal', function( req, res ) {
 	});
 
 });
+
+router.get('/admin', function(req, res){
+	db.query( 'SELECT huis.huisnaam FROM huis JOIN huis_huisgenoot ON huis.huisnaam = huis_huisgenoot.huisnaam WHERE email_huisgenoot="jancees@test.nl";', function( err, rows, fields ){
+
+		if (err) throw err;
+
+		var huis = {'huisnaam': rows[0].huisnaam};
+
+		res.json(huis);
+	})
+
+})
 
 // Create account
 router.post('/createAccount', function (req, res ){
@@ -104,14 +116,8 @@ router.post('/createAccount', function (req, res ){
 	console.log("created account: " + values.voornaam + " " + values.achternaam);
 });
 
-// Voer declaratie in
+// Insert declaration
 router.post('/declaratieInvoer', function (req, res ){
-	/*
-	// Only add account if email is defined.
-	if ( req.body.email === undefined ) {
-		res.status(400).send("No e-mail defined");
-	}
-	*/
 
 	var values = {
 		'bedrag': req.body.bedrag,
@@ -125,7 +131,7 @@ router.post('/declaratieInvoer', function (req, res ){
 		'email_huisgenoot': "jancees@test.nl"
 	};
 
-	// Insert account in database
+	// Insert declaration in database
 	db.query('INSERT INTO invoer SET ?', values, function( err, result ) {
 		// Catch errors.
 		if (err) throw err;

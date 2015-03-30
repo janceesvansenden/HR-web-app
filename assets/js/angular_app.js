@@ -23,7 +23,8 @@ angular.module('DeNieuweRekening', ['ngRoute'])
         	templateUrl: '/views/invoer/invoer.html'
         })
         .when('/admin', {
-        	templateUrl: '/views/admin/admin.html'
+        	templateUrl: '/views/admin/admin.html',
+            controller: 'AdminController'
         })
         .when('/personal', {
         	templateUrl: '/views/personal/personal.html',
@@ -43,6 +44,19 @@ angular.module('DeNieuweRekening', ['ngRoute'])
         .otherwise({
         	redirectTo: '/'
         });
+    }]);
+angular.module('DeNieuweRekening')
+
+    .controller('AdminController', ['$scope', '$http', function ($scope, $http) {
+    	$http.get('/admin').
+	    	success(function(data){
+	    		//console.log('succes: ', data);
+	    		$scope.admin = data;
+	    		console.log($scope.admin);
+	    	}).
+	    	error(function(data, status){
+	    		console.log('error: ',data, status);
+	    	});
     }]);
 angular.module('DeNieuweRekening')
 

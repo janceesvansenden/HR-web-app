@@ -23,7 +23,8 @@ angular.module('DeNieuweRekening', ['ngRoute'])
         	templateUrl: '/views/invoer/invoer.html'
         })
         .when('/admin', {
-        	templateUrl: '/views/admin/admin.html'
+        	templateUrl: '/views/admin/admin.html',
+            controller: 'AdminController'
         })
         .when('/personal', {
         	templateUrl: '/views/personal/personal.html',
