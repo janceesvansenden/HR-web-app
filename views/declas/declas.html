@@ -1,7 +1,7 @@
 <h1>Declaratie's</h1>
 
 <div class="row">
-	<div class="col-sm-4">
+	<div class="col-xs-12 col-sm-4">
 
 		<form class="form" action="/declaratieInvoer" method="post">
 			<div class="form-group">
@@ -25,39 +25,42 @@
 			</div>
 			<div class="radio">
 				<label for="">
-					<input type="radio" name="declasRadio" id="iedereen" value="1" ng-model="iedereen" ng-change="change(iedereen)" checked="checked">
+					<input type="radio" ng-model="value" value="1" ng-change="change(value)">
 					Iedereen
 				</label>
 				<label for="">
-					<input type="radio" name="declasRadio" id="kiezen" value="0" ng-model="iedereen" ng-change="change(iedereen)">
+					<input type="radio" ng-model="value" value="0" ng-change="change(value)">
 					Kies personen
 				</label>
 			</div>
-			<button type="submit" class="btn btn-primary">Toevoegen</button>
 		</form>
 	</div>
 
 
-	<div class="col-xs-8 col-sm-7 col-sm-offset-1">
-		<div class="deelnemers">
+	<div class="col-xs-12 col-sm-7 col-sm-offset-1">
+		<div class="deelnemers" ng-style="displayStyle">
 			<label class="control-label">Deelnemers</label>
 			
-			<form class="form-group form-inline" ng-repeat="deelnemer in deelnemers">
-				<div class="form-group">
-					<button type="button" class="btn btn-default" aria-expanded="false" ng-click="addOne($index)">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
-					<input type="text" class="form-control formNumber" style="width: 3em" ng-value="deelnemer.value" id="{{ deelnemer.id }}">
-					<button type="button" class="btn btn-default" aria-expanded="false" ng-click="minOne($index)">
-						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-					</button>
-					<span>&nbsp;&nbsp; {{ deelnemer.name }}</span>
+			<div class="deelnemers" ng-repeat="deelnemer in deelnemers">
+				<div class="row">
+					<div class="col-xs-10 col-md-8">
+						<button type="button" class="btn btn-default" ng-click="addOne($index)">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						</button>
+						<input type="text" class="formNumber" style="width: 3em" ng-value="deelnemer.value" id="{{ deelnemer.id }}">
+						<button type="button" class="btn btn-default" ng-click="minOne($index)">
+							<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+						</button>
+						<span>&nbsp; &nbsp; {{ deelnemer.name }}</span>
+					</div>
+					<div class="col-xs-2 col-md-4">
+						<span>€ {{ deelnemer.kosten }}</span>
+					</div>
 				</div>
-			</form>			
+			</div>	
 		</div>
-
 	</div>
 </div>
-
-
-
+<div>
+	<button type="submit" class="btn btn-primary" ng-click="test()">Toevoegen</button>
+</div>
