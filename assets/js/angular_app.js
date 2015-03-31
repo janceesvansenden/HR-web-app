@@ -54,7 +54,20 @@ angular.module('DeNieuweRekening')
     .controller('DeclasController', ['$scope', 'deelnemers', function ($scope, deelnemers) {
     	$scope.deelnemers = deelnemers;
 
+    	$scope.addOne = function(index) {
+    		$scope.deelnemers[index].value += 1;
+    	};
 
+    	$scope.minOne = function(index) {
+    		if ( $scope.deelnemers[index].value > 0)
+    			$scope.deelnemers[index].value -= 1;
+    	};
+
+    	$scope.change = function(iedereen) {
+    		for ( deelnemer in $scope.deelnemers ) {
+    			deelnemer.value = iedereen;
+    		}
+    	};
     }]);
 angular.module('DeNieuweRekening')
 
@@ -129,9 +142,9 @@ angular.module('DeNieuweRekening')
 
 	.factory('deelnemers', function() {
 		return deelnemers = [
-			{ name: 'Bart', value: 1 },
-			{ name: 'Jan Cees', value: 0 },
-			{ name: 'Henk', value: 0 },
-			{ name: 'Frits', value: 0 }
+			{ id: 1, name: 'Bart', value: 1 },
+			{ id: 2, name: 'Jan Cees', value: 1 },
+			{ id: 3, name: 'Henk', value: 1 },
+			{ id: 4, name: 'Frits', value: 1 }
 		];
 	});
