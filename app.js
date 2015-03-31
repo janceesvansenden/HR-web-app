@@ -118,7 +118,13 @@ router.post('/createAccount', function (req, res ){
 
 // Insert declaration
 router.post('/declaratieInvoer', function (req, res ){
-
+	// Verwerk data van declaratie
+	console.log("bedrag: " + req.body.bedrag);
+	console.log("naam: " + req.body.wat);
+	console.log("datum: " + req.body.datum);
+	
+	
+	// maak decla klaar voor invoer in database
 	var values = {
 		'bedrag': req.body.bedrag,
 		'naam': req.body.wat,
@@ -127,7 +133,7 @@ router.post('/declaratieInvoer', function (req, res ){
 		'turf_flag': 0,
 		'naam_kostenpost': "niet verwerkt",
 		'tab_kostenpost': "niet verwerkt",
-		'huisnaam_kostenpost': "orw kut",
+		'huisnaam_kostenpost': "Huize avondzon",
 		'email_huisgenoot': "jancees@test.nl"
 	};
 
@@ -142,13 +148,6 @@ router.post('/declaratieInvoer', function (req, res ){
 
 // Maak huis aan
 router.post('/huisAanmaken', function (req, res ){
-	/*
-	// Only add account if email is defined.
-	if ( req.body.email === undefined ) {
-		res.status(400).send("No e-mail defined");
-	}
-	*/
-
 	var values = {
 		'huisnaam': req.body.huisnaam,
 		'wachtwoord': req.body.wachtwoord,
