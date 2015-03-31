@@ -33,6 +33,10 @@
 					Kies personen
 				</label>
 			</div>
+			<div ng-repeat="deelnemer in deelnemers">
+				<input type="hidden" name="{{ deelnemer.id }}" value="{{ deelnemer.value }}">
+			</div>
+
 			<button type="submit" class="btn btn-primary">Toevoegen</button>
 		</form>
 	</div>
