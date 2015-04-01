@@ -1,0 +1,67 @@
+<h1>Declaratie's</h1>
+
+<div class="row">
+	<div class="col-sm-4">
+
+		<form class="form" action="/declaratieInvoer" method="post">
+			<div class="form-group">
+				<label for="wat" class="control-label">Wat</label>
+				<div class="">
+					<input type="text" class="form-control" id="wat" name="wat">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="bedrag" class="control-label">Bedrag</label>
+				<div class="input-group">
+					<div class="input-group-addon">&euro;</div>
+					<input type="text" class="form-control" id="bedrag" name="bedrag">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="Datum" class="control-label">Datum</label>
+				<div class="">
+					<input type="date" class="form-control" id="datum" name="datum">
+				</div>
+			</div>
+			<div class="radio">
+				<label for="">
+					<input type="radio" name="declasRadio" id="iedereen" value="1" ng-model="iedereen" ng-change="change(iedereen)" checked="checked">
+					Iedereen
+				</label>
+				<label for="">
+					<input type="radio" name="declasRadio" id="kiezen" value="0" ng-model="iedereen" ng-change="change(iedereen)">
+					Kies personen
+				</label>
+			</div>
+			<div ng-repeat="deelnemer in deelnemers">
+				<input type="hidden" name="{{ deelnemer.id }}" value="{{ deelnemer.value }}">
+			</div>
+
+			<button type="submit" class="btn btn-primary">Toevoegen</button>
+		</form>
+	</div>
+
+
+	<div class="col-xs-8 col-sm-7 col-sm-offset-1">
+		<div class="deelnemers">
+			<label class="control-label">Deelnemers</label>
+			
+			<form class="form-group form-inline" ng-repeat="deelnemer in deelnemers">
+				<div class="form-group">
+					<button type="button" class="btn btn-default" aria-expanded="false" ng-click="addOne($index)">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+					<input type="text" class="form-control formNumber" style="width: 3em" ng-value="deelnemer.value" id="{{ deelnemer.id }}">
+					<button type="button" class="btn btn-default" aria-expanded="false" ng-click="minOne($index)">
+						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+					</button>
+					<span>&nbsp;&nbsp; {{ deelnemer.name }}</span>
+				</div>
+			</form>			
+		</div>
+
+	</div>
+</div>
+
+
+

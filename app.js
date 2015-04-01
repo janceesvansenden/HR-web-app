@@ -77,15 +77,31 @@ router.get('/personal', function( req, res ) {
 
 router.get('/admin', function(req, res){
 	db.query( 'SELECT huis.huisnaam FROM huis JOIN huis_huisgenoot ON huis.huisnaam = huis_huisgenoot.huisnaam WHERE email_huisgenoot="jancees@test.nl";', function( err, rows, fields ){
-
 		if (err) throw err;
-
 		var huis = {'huisnaam': rows[0].huisnaam};
-
 		res.json(huis);
 	})
 
 })
+
+router.get('/declas', function(req, res){
+	db.query('SELECT huisgenoot.Email, huisgenoot.voornaam FROM huisgenoot JOIN huis_huisgenoot ON huisgenoot.Email = huis_huisgenoot.email_huisgenoot WHERE huis_huisgenoot.huisnaam = "Huize avondzon";', function(err, rows, fields){
+		if (err) throw err;
+
+		len = rows.length;
+
+		var deelnemers = [];
+
+		for(var i=0; i<len; i++){
+			deelnemers[i] = {
+				'email': rows[i].Email,
+				'voornaam': rows[i].voornaam
+			};
+		}
+		res.json(deelnemers);
+	})
+})
+
 
 // Create account
 router.post('/createAccount', function (req, res ){
@@ -118,7 +134,12 @@ router.post('/createAccount', function (req, res ){
 
 // Insert declaration
 router.post('/declaratieInvoer', function (req, res ){
-
+	// Verwerk data van declaratie
+	console.log("bedrag: " + req.body.bedrag);
+	console.log("naam: " + req.body.wat);
+	console.log("datum: " + req.body.datum);	
+	
+	// maak decla klaar voor invoer in database
 	var values = {
 		'bedrag': req.body.bedrag,
 		'naam': req.body.wat,
@@ -127,7 +148,7 @@ router.post('/declaratieInvoer', function (req, res ){
 		'turf_flag': 0,
 		'naam_kostenpost': "niet verwerkt",
 		'tab_kostenpost': "niet verwerkt",
-		'huisnaam_kostenpost': "orw kut",
+		'huisnaam_kostenpost': "Huize avondzon",
 		'email_huisgenoot': "jancees@test.nl"
 	};
 
@@ -137,18 +158,11 @@ router.post('/declaratieInvoer', function (req, res ){
 		if (err) throw err;
 	});
 
-	console.log("declaratie ingevoerd: " + values.naam + " €" + values.bedrag);
+	console.log("declaratie ingevoerd: " + values.naam + ", €" + values.bedrag);
 });
 
 // Maak huis aan
 router.post('/huisAanmaken', function (req, res ){
-	/*
-	// Only add account if email is defined.
-	if ( req.body.email === undefined ) {
-		res.status(400).send("No e-mail defined");
-	}
-	*/
-
 	var values = {
 		'huisnaam': req.body.huisnaam,
 		'wachtwoord': req.body.wachtwoord,
