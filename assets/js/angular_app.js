@@ -65,10 +65,20 @@ angular.module('DeNieuweRekening')
     }]);
 angular.module('DeNieuweRekening')
 
-    .controller('DeclasController', ['$scope', 'deelnemers', function ($scope, deelnemers) {
+    .controller('DeclasController', ['$scope', '$http', function ($scope, $http) {
+    	$http.get('/declas').
+    		success(function(data){
+    			$scope.deelnemers = data;
+    			console.log($scope.deelnemers);
+    		}).
+    		error(function(data, status){
+    			console.log('error: ', data, status);
+    		});
+    	/*$scope.deelnemers = deelnemers;
+    	console.log("deelnemers: " + $scope.deelnemers);
+
     	$scope.deelnemers = deelnemers;
-        $scope.value = "1";
-        $scope.displayStyle = {display : 'none'};
+    	*/
  
     	$scope.addOne = function(index) {
     		$scope.deelnemers[index].value += 1;
@@ -79,23 +89,11 @@ angular.module('DeNieuweRekening')
     			$scope.deelnemers[index].value -= 1;
 	   	};
 
-    	$scope.change = function(value) {
-            for ( i in $scope.deelnemers )
-                $scope.deelnemers[i].value = parseInt(value);
-            $scope.displayStyle = {display : 'none'};
-            if ( value == 0 ) 
-                $scope.displayStyle = {display : 'inline'};
-        };
-
-        var ptot = 0;
-        for (i in $scope.deelnemers ) {
-            ptot += $scope.deelnemers[i].value;
-        };
-
-        $scope.test = function() {
-            console.log(ptot);
-            console.log($scope.deelnemers[1].value;);
-        };
+    	$scope.change = function(iedereen) {
+    		for ( deelnemer in $scope.deelnemers ) {
+    			deelnemer.value = iedereen;
+    		}
+    	};
     }]);
 angular.module('DeNieuweRekening')
 
@@ -170,9 +168,9 @@ angular.module('DeNieuweRekening')
 
 	.factory('deelnemers', function() {
 		return deelnemers = [
-			{ id: 1, name: 'Bart', kosten: '0.00', value: 1 },
-			{ id: 2, name: 'Jan Cees', kosten: '0.00', value: 1 },
-			{ id: 3, name: 'Henk', kosten: '0.00', value: 1 },
-			{ id: 4, name: 'Frits', kosten: '0.00', value: 1 }
+			{ id: 1, name: 'Bart', value: 1 },
+			{ id: 2, name: 'Jan Cees', value: 1 },
+			{ id: 3, name: 'Henk', value: 1 },
+			{ id: 4, name: 'Frits', value: 1 }
 		];
 	});
