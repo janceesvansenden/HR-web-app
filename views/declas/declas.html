@@ -33,6 +33,9 @@
 					Kies personen
 				</label>
 			</div>
+			<div ng-repeat="deelnemer in deelnemers">
+				<input type="hidden" name="{{ deelnemer.id }}" value="{{ deelnemer.value }}">
+			</div>
 		</form>
 	</div>
 
@@ -51,7 +54,7 @@
 						<button type="button" class="btn btn-default" ng-click="minOne($index)">
 							<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
 						</button>
-						<span>&nbsp; &nbsp; {{ deelnemer.name }}</span>
+						<span>&nbsp; &nbsp; {{ deelnemer.voornaam }}</span>
 					</div>
 					<div class="col-xs-2 col-md-4">
 						<span>€ {{ deelnemer.kosten }}</span>
