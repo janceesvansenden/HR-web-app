@@ -86,4 +86,5 @@ module.exports = function(grunt) {
 
 	// Task definition
 	grunt.registerTask('default', ['less','concat','uglify','watch']);
+	grunt.registerTask('kijk', ['less','concat','watch']);
 };

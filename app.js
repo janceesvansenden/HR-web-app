@@ -95,7 +95,9 @@ router.get('/declas', function(req, res){
 		for(var i=0; i<len; i++){
 			deelnemers[i] = {
 				'email': rows[i].Email,
-				'voornaam': rows[i].voornaam
+				'voornaam': rows[i].voornaam,
+				'value' : 1,
+				'kosten' : 0.00
 			};
 		}
 		res.json(deelnemers);
