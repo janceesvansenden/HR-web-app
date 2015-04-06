@@ -148,6 +148,7 @@ angular.module('DeNieuweRekening')
       $scope.huisgenoten = Huisgenoten;
       $scope.turfartikelen = Turfartikelen;
 
+
       $scope.addHuis = function(index) {
         $scope.huisgenoten[index].value += 1;
         console.log($scope.huisgenoten[index].value);
