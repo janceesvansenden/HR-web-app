@@ -148,47 +148,44 @@ angular.module('DeNieuweRekening')
       $scope.huisgenoten = Huisgenoten;
       $scope.turfartikelen = Turfartikelen;
 
-      var width;
-      var columnWidth = $('.huisgenoten-turven').width();
-
-      if (window.innerWidth <= 1024 ) {
-        width = Math.floor(columnWidth/3) - 8;
-      } else {
-        width = Math.floor(columnWidth/4) - 10;
+      $scope.addHuis = function(index) {
+        $scope.huisgenoten[index].value += 1;
+        console.log($scope.huisgenoten[index].value);
       };
-     
-      
-      $scope.huisgenootStyle = {
-      	'width': width + "px",
-      	'height': width + "px"
-      }
-      
 
-      $scope.turfStyle = {
-      	'width': width + "px",
-      	'height': width + "px"      	
+      $scope.addTurf = function(index) {
+        $scope.turfartikelen[index].value += 1;
+      };
+
+      $scope.turven = function() {
+
       }
     }])
 
+
+
+
+
+
     .factory('Huisgenoten', function() {
     	return [
-			{ name: "Bart" },
-			{ name: "Jan Cees" },
-			{ name: "Peta" },
-			{ name: "Piet" },
-			{ name: "Henk" }
+			{ name: "Bart", value: 0 },
+			{ name: "Jan Cees", value: 0 },
+			{ name: "Peta", value: 0 },
+			{ name: "Piet", value: 0 },
+			{ name: "Henk", value: 0 }
 		 ];
     })
 
     .factory('Turfartikelen', function() {
     	return [
-    		{ name: "Pils" },
-    		{ name: "Fris" },
-    		{ name: "Twix" },
-    		{ name: "Mars" },
-    		{ name: "Cup a Soup" },
-    		{ name: "Chips" },
-    		{ name: "Noodles" }
+    		{ name: "Pils", value: 0 },
+    		{ name: "Fris", value: 0 },
+    		{ name: "Twix", value: 0 },
+    		{ name: "Mars", value: 0 },
+    		{ name: "Cup a Soup", value: 0 },
+    		{ name: "Chips", value: 0 },
+    		{ name: "Noodles", value: 0 }
     	];
     })
 
