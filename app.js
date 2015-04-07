@@ -96,7 +96,7 @@ router.get('/declas', function(req, res){
 			deelnemers[i] = {
 				'email': rows[i].Email,
 				'voornaam': rows[i].voornaam,
-				'value' : 1,
+				'value' : 0,
 				'kosten' : 0.00
 			};
 		}
@@ -137,30 +137,62 @@ router.post('/createAccount', function (req, res ){
 // Insert declaration
 router.post('/declaratieInvoer', function (req, res ){
 	// Verwerk data van declaratie
-	console.log("bedrag: " + req.body.bedrag);
+	console.log("bedrag: " + req.body.totaalbedrag);
 	console.log("naam: " + req.body.wat);
-	console.log("datum: " + req.body.datum);	
-	
+	console.log("datum: " + req.body.datum);
+
+	for (i in req.body.betalers){
+		console.log("betaler " + i + ": " + req.body.betalers[i].email + ", value: " + req.body.betalers[i].value + ", " + betaalFractie(req.body.betalers, req.body.betalers[i]));
+	}
+
 	// maak decla klaar voor invoer in database
-	var values = {
-		'bedrag': req.body.bedrag,
+	var kostenpostValues = {
+		'huisnaam': "Huize avondzon",
+		'naam': req.body.wat,
+		'tab': "niet verwerkt"
+	};
+
+	var invoerValues = {
+		'bedrag': req.body.totaalbedrag,
 		'naam': req.body.wat,
 		'datum': req.body.datum,
 		'declaratie_flag': 1,
 		'turf_flag': 0,
-		'naam_kostenpost': "niet verwerkt",
+		'naam_kostenpost': req.body.wat,
 		'tab_kostenpost': "niet verwerkt",
 		'huisnaam_kostenpost': "Huize avondzon",
 		'email_huisgenoot': "jancees@test.nl"
 	};
 
-	// Insert declaration in database
-	db.query('INSERT INTO invoer SET ?', values, function( err, result ) {
-		// Catch errors.
+	// Insert declaratie in database
+	db.query('INSERT INTO kostenpost SET ?', kostenpostValues, function( err, result){
 		if (err) throw err;
 	});
 
-	console.log("declaratie ingevoerd: " + values.naam + ", €" + values.bedrag);
+	db.query('INSERT INTO invoer SET ?', invoerValues, function( err, result ) {
+		if (err) throw err;
+
+		var invoerID = result.insertId;
+		console.log("declaratie ingevoerd: " + invoerValues.naam + ", " + invoerValues.bedrag + " Euro, invoerID: " + invoerID);
+
+		koppelHuisgenootDecla(req.body.betalers);
+	});
+
+	function koppelHuisgenootDecla(betalers){
+		for (i in betalers){
+			var betalerValues = {
+				'huisnaam': "Huize avondzon",
+				'naam_kostenpost': req.body.wat,
+				'tab_kostenpost': "niet verwerkt",
+				'email_huisgenoot': betalers[i].email,
+				'percentage': betaalFractie(betalers, betalers[i])
+			};
+
+			db.query('INSERT INTO kostenpost_huisgenoot SET ?', betalerValues, function( err, result ){
+				if (err) throw err;
+			});
+		};
+	};	
 });
 
 // Maak huis aan
@@ -188,6 +220,19 @@ router.post('/huisAanmaken', function (req, res ){
 
 // apply router to application
 app.use('/', router);
+
+
+/* =========================== HULP FUNCTIES ================= */
+function betaalFractie(betalers, betaler){
+	var totalValue = 0;
+	for (i in betalers){
+		totalValue += betalers[i].value;
+	};
+	var fractie = betaler.value/totalValue;
+	return fractie;
+};
+
+
 
 /* =========================== RUN SERVER ==================== */
 

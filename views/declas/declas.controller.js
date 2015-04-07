@@ -52,8 +52,30 @@ angular.module('DeNieuweRekening')
 
         // Add decla to database
         $scope.toevoegen = function() {
-            
-        }
+            $scope.betalers = [];
+            for (i in $scope.deelnemers){
+                if($scope.deelnemers[i].value >= 0){
+                    var betaler = {'email': $scope.deelnemers[i].email,
+                                    'value': $scope.deelnemers[i].value};
+                    $scope.betalers.push(betaler);
+                };
+            };
+
+            var data = { 
+                wat: $scope.wat,
+                totaalbedrag: $scope.totbedrag,
+                datum: $scope.datum,
+                betalers: $scope.betalers
+            };
+
+            $http.post('/declaratieInvoer', data).
+                success(function(data, status){
+                    console.log(status);
+                }).
+                error(function(data, status){
+                    console.log('error: ', data, status);
+                });  
+        };
 
         // Watch for changes, if so run update()
         $scope.$watch(function(scope) { return $scope.update() },
