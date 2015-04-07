@@ -1,17 +1,28 @@
 <h1>Turven</h1>
 
-<div class="row">
-	<div class="col-sm-6 col-xs-12 huisgenoten-turven">
-		<button class="button-turven" ng-repeat="huisgenoot in huisgenoten" ng-click="addHuis($index)" ng-style="{'background-image': 'url('Bart.png')">
-			<p>{{ huisgenoot.value }}</p>
+<ul class="nav nav-tabs">
+	<li role="presentation" class="active"><a href="#/turven">Turven</a></li>
+  	<li role="presentation"><a href="#/turven/log">Log</a></li>
+</ul>
+
+<div class="row huisgenoten-turven">
+	<div class="col-sm-6 col-xs-12">
+		<button class="button-turven" ng-repeat="huisgenoot in huisgenoten" ng-click="addHuis($index)">
+			<p>{{ huisgenoot.name }}</p>
+			<h1 ng-show="huisgenoot.value">{{ huisgenoot.value }}</h1>
 		</button>
 	</div>
 	<div class="col-sm-6 col-xs-12">
 		<button class="button-turven" ng-repeat="turf in turfartikelen" ng-click="addTurf($index)">
-			<span>{{ turf.name }}</span>
+			<p>{{ turf.name }}</p>
+			<h1 ng-show="turf.value">{{ turf.value }}</h1>
 		</button>
 	</div>
 </div>
-<div clas="row row-turven">
-	<button class="btn btn-primary" ng-click="turven()">Turven</button>	
+<div clas="row">
+	<div class="toevoegen-turven">
+		<button class="btn btn-default" ng-click="turfmin()">Turf verwijderen</button>
+		<button class="btn btn-primary btn-lg" ng-click="turven()">Turven</button>	
+		<button class="btn btn-default" ng-click="reset()">Reset</button>
+	</div>
 </div>
