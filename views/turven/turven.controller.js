@@ -4,18 +4,50 @@ angular.module('DeNieuweRekening')
       $scope.huisgenoten = Huisgenoten;
       $scope.turfartikelen = Turfartikelen;
 
+      // Change sign for turven
+      $scope.turfsign = 1;
+      $scope.turfmin = function() {
+        $scope.turfsign *= -1;
+      }
 
+      // Add function for huisgenoten en turfartikelen
+      $scope.add = function(wat,index) {
+        if ($scope.turfsign == -1 && wat[index] == 0) {
+          $scope.turfsign = 1;
+          return;
+        } else {
+          wat[index].value += $scope.turfsign;
+        }
+        $scope.turfsign = 1;
+      }
+
+      // Add one for huisgenoot
       $scope.addHuis = function(index) {
-        $scope.huisgenoten[index].value += 1;
-        console.log($scope.huisgenoten[index].value);
+        $scope.add($scope.huisgenoten,index);
       };
 
+      // Add on for turfartikel
       $scope.addTurf = function(index) {
-        $scope.turfartikelen[index].value += 1;
+        $scope.add($scope.turfartikelen,index);
       };
 
+      // Reset all
+      $scope.reset = function() {
+        for ( i in $scope.huisgenoten ) {
+          $scope.huisgenoten[i].value = 0;
+        }
+        for ( i in $scope.turfartikelen ) {
+          $scope.turfartikelen[i].value = 0;
+        }
+      };
+
+      // Turven
       $scope.turven = function() {
 
+
+
+        // Reset all after turven
+        $scope.reset();
       }
     }])
 
