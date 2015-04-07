@@ -1,7 +1,12 @@
 <h1>Turven</h1>
 
-<div class="row">
-	<div class="col-sm-6 col-xs-12 huisgenoten-turven">
+<ul class="nav nav-tabs">
+	<li role="presentation" class="active"><a href="#/turven">Turven</a></li>
+  	<li role="presentation"><a href="#/turven/log">Log</a></li>
+</ul>
+
+<div class="row huisgenoten-turven">
+	<div class="col-sm-6 col-xs-12">
 		<button class="button-turven" ng-repeat="huisgenoot in huisgenoten" ng-click="addHuis($index)">
 			<p>{{ huisgenoot.name }}</p>
 			<h1 ng-show="huisgenoot.value">{{ huisgenoot.value }}</h1>

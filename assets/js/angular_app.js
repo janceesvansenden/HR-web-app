@@ -9,6 +9,9 @@ angular.module('DeNieuweRekening', ['ngRoute'])
         	templateUrl: '/views/turven/turven.html',
             controller: 'TurvenController'
         })
+        .when('/turven/log', {
+            templateUrl: 'views/turven/log.html'
+        })
         .when('/statistieken', {
         	templateUrl: '/views/statistieken/statistieken.html'
         })
